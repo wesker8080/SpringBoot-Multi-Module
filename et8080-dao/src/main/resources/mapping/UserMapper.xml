@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteai.et8080.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteai.et8080.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="node_id" property="nodeId" jdbcType="INTEGER" />
+    <result column="police_id" property="policeId" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="police_rank" property="policeRank" jdbcType="VARCHAR" />
+    <result column="bureau" property="bureau" jdbcType="VARCHAR" />
+    <result column="recent_login_time" property="recentLoginTime" jdbcType="TIMESTAMP" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, node_id, police_id, username, password, phone, created, police_rank, bureau, 
+    recent_login_time, sex
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteai.et8080.model.User" >
+    insert into user (id, node_id, police_id, 
+      username, password, phone, 
+      created, police_rank, bureau, 
+      recent_login_time, sex)
+    values (#{id,jdbcType=INTEGER}, #{nodeId,jdbcType=INTEGER}, #{policeId,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{policeRank,jdbcType=VARCHAR}, #{bureau,jdbcType=VARCHAR}, 
+      #{recentLoginTime,jdbcType=TIMESTAMP}, #{sex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteai.et8080.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nodeId != null" >
+        node_id,
+      </if>
+      <if test="policeId != null" >
+        police_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="policeRank != null" >
+        police_rank,
+      </if>
+      <if test="bureau != null" >
+        bureau,
+      </if>
+      <if test="recentLoginTime != null" >
+        recent_login_time,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="policeId != null" >
+        #{policeId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policeRank != null" >
+        #{policeRank,jdbcType=VARCHAR},
+      </if>
+      <if test="bureau != null" >
+        #{bureau,jdbcType=VARCHAR},
+      </if>
+      <if test="recentLoginTime != null" >
+        #{recentLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteai.et8080.model.User" >
+    update user
+    <set >
+      <if test="nodeId != null" >
+        node_id = #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="policeId != null" >
+        police_id = #{policeId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policeRank != null" >
+        police_rank = #{policeRank,jdbcType=VARCHAR},
+      </if>
+      <if test="bureau != null" >
+        bureau = #{bureau,jdbcType=VARCHAR},
+      </if>
+      <if test="recentLoginTime != null" >
+        recent_login_time = #{recentLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteai.et8080.model.User" >
+    update user
+    set node_id = #{nodeId,jdbcType=INTEGER},
+      police_id = #{policeId,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      police_rank = #{policeRank,jdbcType=VARCHAR},
+      bureau = #{bureau,jdbcType=VARCHAR},
+      recent_login_time = #{recentLoginTime,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

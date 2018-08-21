@@ -1,0 +1,57 @@
+#\u81EA\u5B9A\u4E49\u5C5E\u6027\u914D\u7F6E\uFF0C\u53EA\u80FD\u653E\u5728\u8FD9\u4E2A\u6587\u4EF6\u91CC
+customer:
+    name: wesker
+    age: 24
+    number:  ${random.int}
+    uuid : ${random.uuid}
+    max: ${random.int(10)}
+    value: ${random.value}
+    greeting: hi,i'm  ${customer.name}
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  config-location: /mapping/*.xml
+  type-aliases-package: com.eliteai.et8080.model
+spring:
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  thymeleaf:
+    cache: false
+  profiles:
+    active: dev
+  datasource:
+        name: WTWD-A8
+        url: jdbc:mysql://127.0.0.1:3306/eliteai
+        username: root
+        password: root
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: test
+server:
+  port: 8080
+
+
